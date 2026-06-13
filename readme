@@ -1,0 +1,189 @@
+# SauceDemo Robot Framework Automation
+
+## Overzicht
+
+Dit project bevat een geautomatiseerde UI-testsuite voor de SauceDemo applicatie, ontwikkeld met Robot Framework en de Browser Library (Playwright).
+
+Het doel van deze opdracht was niet alleen het automatiseren van testscenario's, maar ook het neerzetten van een onderhoudbaar en schaalbaar testframework dat eenvoudig uitgebreid kan worden.
+
+---
+
+## Architectuur
+
+Het framework is opgezet volgens het **Page Object Model (POM)** principe.
+
+### Projectstructuur
+
+```text
+resources/
+├── browser/
+├── config/
+├── keywords/
+├── pages/
+
+tests/
+```
+
+### Pages
+
+Voor iedere pagina is een aparte resource-file aangemaakt waarin de volgende zaken zijn ondergebracht:
+
+* Locators
+* Pagina-specifieke acties
+* Pagina-specifieke validaties
+
+Voorbeelden:
+
+* `login_page.resource`
+* `inventory_page.resource`
+* `cart_page.resource`
+* `checkoutStepOne_page.resource`
+* `checkoutStepTwo_page.resource`
+
+Hierdoor blijven verantwoordelijkheden gescheiden en kunnen wijzigingen op een pagina centraal worden beheerd.
+
+---
+
+## Scheiding van testdata en testlogica
+
+Alle testdata is ondergebracht in aparte configuratiebestanden.
+
+### Gebruikers
+
+```robot
+&{STANDARD_USER}
+&{LOCKED_OUT_USER}
+&{INVALID_USER}
+```
+
+### Productcatalogus
+
+```robot
+&{PRODUCT_CATALOG}
+```
+
+### Producten die tijdens een test worden toegevoegd
+
+```robot
+@{PRODUCTS_TO_ADD}
+```
+
+Door testdata los te koppelen van de testimplementatie ontstaat een duidelijke scheiding tussen data en logica.
+
+---
+
+## Dynamische validaties
+
+Waar mogelijk zijn validaties dynamisch opgezet.
+
+Voorbeeld:
+
+In plaats van productnamen en prijzen hardcoded in de tests op te nemen, worden deze centraal beheerd in een productcatalogus.
+
+De tests controleren vervolgens dynamisch:
+
+* Het aantal producten
+* De productnamen
+* De bijbehorende prijzen
+* De inhoud van de winkelwagen
+
+Hierdoor hoeft informatie slechts op één plaats onderhouden te worden.
+
+---
+
+## Herbruikbare keywords
+
+Business-acties zijn ondergebracht in herbruikbare keywords.
+
+Voorbeelden:
+
+```robot
+Login As User
+Add Products To Cart
+Go To Cart
+Go To Checkout
+Fill In Checkout Information
+```
+
+Tests beschrijven hierdoor het gebruikersproces in plaats van technische implementatiedetails.
+
+Voorbeeld:
+
+```robot
+Add selected products to cart and proceed to checkout
+```
+
+in plaats van een reeks losse UI-acties zoals klikken en invoeren van tekst.
+
+Dit verhoogt de leesbaarheid en onderhoudbaarheid van de tests.
+
+---
+
+## Geïmplementeerde functionaliteit
+
+### Login
+
+* Succesvolle login
+* Ongeldige gebruiker
+* Geblokkeerde gebruiker
+
+### Inventory
+
+* Controle van de inventory pagina
+* Controle van het aantal producten
+* Controle van productnamen
+* Controle van productprijzen
+
+### Winkelwagen
+
+* Producten toevoegen aan de winkelwagen
+* Controle van het aantal artikelen in de winkelwagen
+* Controle van de inhoud van de winkelwagen
+
+### Checkout
+
+* Invullen van checkoutgegevens
+* Navigatie naar checkout overview
+* Validatie van de overview pagina
+
+---
+
+## Ontwerpkeuzes
+
+Tijdens de implementatie is bewust gekozen voor:
+
+* Page Object Model (POM)
+* Herbruikbare keywords
+* Scheiding tussen data en logica
+* Een centrale bron voor testdata
+* Leesbare business-georiënteerde tests
+* Minimale duplicatie van code
+* Een schaalbare projectstructuur
+
+---
+
+## Gebruikte technologieën
+
+* Robot Framework
+* Browser Library
+* Playwright
+* Python
+
+---
+
+## Mogelijke vervolgstappen
+
+Wanneer dit framework verder zou worden uitgebreid, zie ik onder andere de volgende verbeteringen:
+
+* Data-driven testuitvoering met templates
+* API-testautomatisering
+* Integratie met CI/CD (GitHub Actions)
+* Parallelle testuitvoering
+* Test tagging en filtering
+* Uitgebreidere rapportages
+
+---
+
+## Opmerking
+
+Hoewel de functionele dekking binnen de scope van deze opdracht beperkt is gehouden, is de focus bewust gelegd op de opzet van een onderhoudbaar en uitbreidbaar framework. Hierdoor kunnen nieuwe scenario's relatief eenvoudig worden toegevoegd zonder bestaande tests aan te passen.
