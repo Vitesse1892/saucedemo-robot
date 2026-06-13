@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.6 on win32)" generated="2026-06-13T11:34:47.772411" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\leroy\source\repos\saucedemo-robot\tests">
+<suite id="s1-s1" name="Login" source="C:\Users\leroy\source\repos\saucedemo-robot\tests\login.robot">
+<test id="s1-s1-t1" name="Successful Login" line="5">
+<kw name="New Browser" owner="Browser">
+<msg time="2026-06-13T11:34:48.007870" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\leroy\\source\\repos\\saucedemo-robot\\browser\\traces\\temp\\ac530593-606a-4bce-b28f-2bf8de9dcd22"}</msg>
+<msg time="2026-06-13T11:34:48.072004" level="INFO">Starting Browser process C:\Users\leroy\source\repos\saucedemo-robot\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:59019</msg>
+<msg time="2026-06-13T11:34:49.915691" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\leroy\\source\\repos\\saucedemo-robot\\browser\\traces\\temp\\ac530593-606a-4bce-b28f-2bf8de9dcd22"}</msg>
+<arg>chromium</arg>
+<arg>headless=False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-06-13T11:34:48.007358" elapsed="1.908539"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2026-06-13T11:34:50.370123" level="INFO">Successfully initialized new page object and opened url: https://www.saucedemo.com/</msg>
+<msg time="2026-06-13T11:34:50.370186" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>https://www.saucedemo.com/</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-06-13T11:34:49.916596" elapsed="0.453694"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-06-13T11:34:50.371318" level="INFO">Fills the text 'standard_user' in the given field.</msg>
+<arg>id=user-name</arg>
+<arg>standard_user</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-06-13T11:34:50.370710" elapsed="0.033027"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-06-13T11:34:50.405111" level="INFO">Fills the text 'secret_sauce' in the given field.</msg>
+<arg>id=password</arg>
+<arg>secret_sauce</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-06-13T11:34:50.404088" elapsed="0.010169"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-06-13T11:34:50.415299" level="INFO">Clicks the element 'id=login-button'.</msg>
+<arg>id=login-button</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-06-13T11:34:50.414706" elapsed="0.117103"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-06-13T11:34:50.554787" level="INFO">Text: ['Products']</msg>
+<arg>.title</arg>
+<arg>==</arg>
+<arg>Products</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-06-13T11:34:50.532292" elapsed="0.022667"/>
+</kw>
+<kw name="Close Browser" owner="Browser">
+<msg time="2026-06-13T11:34:50.977302" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-13T11:34:50.555285" elapsed="0.422124"/>
+</kw>
+<status status="PASS" start="2026-06-13T11:34:48.006635" elapsed="2.971064"/>
+</test>
+<status status="PASS" start="2026-06-13T11:34:47.796722" elapsed="3.186461"/>
+</suite>
+<status status="PASS" start="2026-06-13T11:34:47.773721" elapsed="3.213363"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="Login" id="s1-s1" pass="1" fail="0" skip="0">Tests.Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
